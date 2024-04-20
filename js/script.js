@@ -48,14 +48,23 @@ createApp({
         };
     },
     created() {
-       
+        const localList = localStorage.getItem("List");
+    if (localList !== null) {
+      this.todoList = JSON.parse(localList);
+    }
+
     },
     methods: {
         addTodo: function () {
             const copyTodo = { ...this.newTodo };
             this.todoList.push(copyTodo);
             this.newTodo.text = "";
-        }
+            this.save();
+        },
+        save: function() {
+            const jsonTodoList = JSON.stringify(this.todoList);
+            localStorage.setItem("List", jsonTodoList);
+        },
 },
 
     

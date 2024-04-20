@@ -17,30 +17,32 @@
     </header>
     <!-- main -->
     <div id="app">
-    <main  class="container">
-        <!-- box add -->
-        <div class="box">
-            <input @keyup.enter="addTodo"class="form-control" type="text" placeholder="es. fare la spesa..."  v-model="newTodo.text">
-            <button  @click="addTodo"  class="btn">Add Task</button>
-           
-        </div>
-        <div class="divider"></div>
-        <!-- list -->
-        <div class="box-list">
-            <ul>
-                <li> <span class="title">&#10148; TASK</span>
-                    <ul>
-                        <li v-for="todo in todoList">
-                            <div class="box-list-2"> <span v-if="todo.done" class="circle green ">&#10003;</span>
-                                <span v-if="!todo.done" class="circle red ">&#10007;</span> <span
-                                :class="{'tex-through':todo.done}">{{todo.text}} <span></span>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </main>
-</div>
+        <main class="container">
+            <!-- box add -->
+            <div class="box">
+                <input @keyup.enter="addTodo" class="form-control" type="text" placeholder="es. fare la spesa..."
+                    v-model="newTodo.text">
+                <button @click="addTodo" class="btn">Add Task</button>
+
+            </div>
+            <div class="divider"></div>
+            <!-- list -->
+            <div class="box-list">
+                <ul>
+                    <li> <span class="title">&#10148; TASK</span>
+                        <ul>
+                            <li v-for="(todo,index) in todoList">
+                                <div class="box-list-2"> <span v-if="todo.done" class="circle green ">&#10003;</span>
+                                    <span v-if="!todo.done" class="circle red ">&#10007;</span>
+                                     <span @click="save"><span @click="todo.done=!todo.done" :class="{'tex-through':todo.done}">{{todo.text}} <span></span>     </span>
+                                      <span @click="save">  <span @click="(event) => todoList.splice(index,1)" class="delete red ">&#10007;</span></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
     <footer>
         <span class="divider"></span>
     </footer>

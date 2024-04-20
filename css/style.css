@@ -132,3 +132,7 @@ ul {
 .bpink {
     background-color: #EC4A9D;
 }
+.delete{
+    text-align: end;
+    text-decoration: none;
+}
