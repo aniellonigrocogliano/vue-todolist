@@ -2,6 +2,10 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            newTodo: {
+                text: "",
+                done: false,
+              },
             todoList: [
                 {
                     text: 'Quarterly Newsletter',
@@ -47,7 +51,11 @@ createApp({
        
     },
     methods: {
-
+        addTodo: function () {
+            const copyTodo = { ...this.newTodo };
+            this.todoList.push(copyTodo);
+            this.newTodo.text = "";
+        }
 },
 
     

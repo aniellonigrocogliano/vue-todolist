@@ -20,8 +20,8 @@
     <main  class="container">
         <!-- box add -->
         <div class="box">
-            <input class="form-control" type="text" placeholder="es. fare la spesa...">
-            <button  class="btn">Add Task</button>
+            <input class="form-control" type="text" placeholder="es. fare la spesa..."  v-model="newTodo.text">
+            <button  @click="addTodo" class="btn">Add Task</button>
            
         </div>
         <div class="divider"></div>
